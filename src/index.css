@@ -1,0 +1,385 @@
+/* src/index.css - ĐÃ SỬA: Tối ưu hóa chiều rộng và tỷ lệ cột */
+:root {
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: #333;
+  background-color: #f4f4f4;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center; /* Căn giữa toàn bộ ứng dụng */
+  align-items: flex-start; /* Đẩy nội dung lên trên */
+  min-width: 100vw;
+  min-height: 100vh;
+  padding: 20px 0; /* Thêm khoảng đệm trên/dưới */
+}
+
+/* -------------------------------------
+   LAYOUT CHÍNH (Đã sửa lỗi trải rộng)
+---------------------------------------- */
+.zippo-shop-container {
+  max-width: 90%; /* Chỉ chiếm tối đa 90% chiều rộng màn hình */
+  width: 100%;    /* Đảm bảo chiếm toàn bộ không gian 90% đó */
+  padding: 2rem;
+  background-color: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* Tăng độ nổi */
+  border-radius: 8px;
+}
+
+h1 {
+  text-align: center;
+  color: #c0392b; /* Màu đỏ đậm Zippo */
+  margin-bottom: 2rem;
+  font-size: 2.2em;
+}
+
+.main-content {
+  display: flex;
+  gap: 40px; /* Tăng khoảng cách giữa hai cột */
+}
+
+.product-section {
+  flex: 3; /* Danh sách sản phẩm chiếm 3 phần (75%) */
+  padding-right: 30px; 
+  border-right: 1px solid #eee;
+}
+
+.cart-section {
+  flex: 1; /* Giỏ hàng chiếm 1 phần (25%) */
+}
+
+/* -------------------------------------
+   DANH SÁCH SẢN PHẨM
+---------------------------------------- */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Cột rộng hơn */
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.product-card {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-card h4 {
+    margin-top: 0;
+    color: #f39c12; /* Vàng đồng */
+}
+
+.tax-info {
+    font-size: 0.8em;
+    color: #95a5a6;
+}
+
+.product-card button {
+    background-color: #f39c12; 
+    color: white;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.product-card button:hover {
+    background-color: #e67e22; 
+}
+
+/* -------------------------------------
+   GIỎ HÀNG
+---------------------------------------- */
+.cart-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px dashed #eee;
+}
+
+.item-details h4 {
+    margin: 0;
+    font-size: 1em;
+}
+
+.item-details p {
+    margin: 4px 0 0 0;
+    font-size: 0.9em;
+    color: #7f8c8d;
+}
+
+.item-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quantity-input {
+    width: 40px;
+    text-align: center;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.item-total {
+    font-weight: bold;
+    color: #c0392b; /* Đỏ Zippo */
+    min-width: 100px;
+    text-align: right;
+}
+
+.remove-btn {
+    background: none;
+    color: #e74c3c;
+    border: 1px solid #e74c3c;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.empty-cart {
+    text-align: center;
+    padding: 20px;
+    background-color: #f7f9f9;
+    border-radius: 4px;
+}
+
+
+/* -------------------------------------
+   TỔNG KẾT
+---------------------------------------- */
+.cart-summary {
+    border-top: 2px solid #34495e;
+    padding-top: 20px;
+    margin-top: 20px;
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.total-line {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-top: 10px;
+}
+
+.discount-line {
+    color: #2ecc71;
+}
+
+.discount-area {
+    display: flex;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.discount-area input {
+    flex-grow: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.discount-area button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.checkout-btn {
+    width: 100%;
+    background-color: #e67e22;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 15px;
+}
+
+/* --- CSS Cho Layout 3 Trang --- */
+
+/* 1. Thanh Điều Hướng */
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 2px solid #eee;
+    margin-bottom: 30px;
+}
+
+.main-nav .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #c0392b;
+    text-decoration: none;
+}
+
+.main-nav .nav-links a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.main-nav .nav-links a:hover {
+    color: #f39c12;
+}
+
+/* 2. Giỏ Hàng Icon Góc Phải */
+.cart-icon-link {
+    position: relative;
+    text-decoration: none;
+    color: #333;
+    font-size: 1.5em;
+}
+
+.cart-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: #e74c3c; /* Đỏ */
+    color: white;
+    border-radius: 50%;
+    padding: 2px 7px;
+    font-size: 0.6em;
+    font-weight: bold;
+}
+
+/* 3. Layout Trang Giỏ Hàng (CartPage.jsx) */
+.cart-page-content {
+    display: flex;
+    gap: 40px;
+}
+
+.cart-details-column {
+    flex: 3; /* Chiếm 60% */
+}
+
+.cart-summary-column {
+    flex: 2; /* Chiếm 40% */
+    border-left: 1px solid #eee;
+    padding-left: 30px;
+}
+
+/* 4. Trang Chủ */
+.homepage {
+    text-align: center;
+    padding: 50px 0;
+}
+
+.shop-info {
+    max-width: 800px;
+    margin: 20px auto 40px;
+    font-size: 1.1em;
+    color: #666;
+}
+
+.zippo-carousel-placeholder {
+    height: 200px;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    border: 2px dashed #ccc;
+    color: #999;
+    font-style: italic;
+}
+
+.product-showcase-grid {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.showcase-item {
+    padding: 5px 10px;
+    background-color: #f39c12;
+    color: white;
+    border-radius: 4px;
+    font-size: 0.8em;
+}
+
+.product-image-container {
+    height: 180px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #eee;
+}
+
+.product-image {
+    width: 100%; 
+    height: 100%;
+    object-fit: contain; 
+    transition: transform 0.3s;
+    padding: 10px; 
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.05); 
+}
+
+/* src/index.css (Trong phần CSS Cho Carousel Trang Chủ) */
+
+.zippo-carousel-display {
+    /* giữ nguyên code cũ */
+    width: 100%;
+    max-height: 400px;
+    overflow: hidden;
+    margin: 20px 0 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: relative; /* Thêm position relative */
+}
+
+.carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* 🌟 THÊM TRANSITION CHO HIỆU ỨNG CHUYỂN CẢNH */
+    transition: opacity 0.5s ease-in-out; 
+}
